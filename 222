@@ -1,0 +1,374 @@
+ test_category_page_pub_date_later_today ___________________________________________________________
+
+user_client = <django.test.client.Client object at 0x7f8472486700>
+posts_with_future_date = [<Post: Affect First Guess Son Second Claim>, <Post: Tree Later Draw Bit Property Individual>, <Post: Already See Hard News Where Point>, <Post: Herself Without So Who Way Million>]
+category_page_post_list_context_key = 'post_list'
+
+    def test_category_page_pub_date_later_today(
+            user_client,
+            posts_with_future_date,
+            category_page_post_list_context_key
+    ):
+        if not posts_with_future_date[0].category:
+            raise AssertionError(
+                'В модели `Post` в атрибуте `category` '
+                'проверьте значение параметра `blank` на соответствие заданию.')
+        category_slug = posts_with_future_date[0].category.slug
+        response = user_client.get(f'/category/{category_slug}/')
+        if response.status_code == HTTPStatus.OK:
+            context_post_list = response.context.get(
+                category_page_post_list_context_key)
+>           assert len(context_post_list) == 0, (
+                'Убедитесь, что на странице категории '
+                'не выводятся записи с датой публикации в будущем.'
+            )
+E           AssertionError: Убедитесь, что на странице категории не выводятся записи с датой публикации в будущем.
+E           assert 1 == 0
+E            +  where 1 = len(<QuerySet [<Post: Affect First Guess Son Second Claim>]>)
+
+tests/test_category_page_views.py:107: AssertionError
+_____________________________________________________________ test_posts_page_pk_unpublished_post _____________________________________________________________
+
+user_client = <django.test.client.Client object at 0x7f8472227640>, unpublished_post = <Post: Door Commercial Newspaper According Than Score>
+
+    def test_posts_page_pk_unpublished_post(user_client, unpublished_post):
+        response = user_client.get(f'/posts/{unpublished_post.id}/')
+>       assert response.status_code == HTTPStatus.NOT_FOUND, (
+            'Убедитесь, что страница поста, снятого с публикации, '
+            'возвращает статус 404.'
+        )
+E       AssertionError: Убедитесь, что страница поста, снятого с публикации, возвращает статус 404.
+E       assert 200 == <HTTPStatus.NOT_FOUND: 404>
+E        +  where 200 = <HttpResponse status_code=200, "text/html; charset=utf-8">.status_code
+E        +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
+
+tests/test_post_detail_views.py:94: AssertionError
+___________________________________________________________ test_posts_page_pk_pub_date_later_today ___________________________________________________________
+
+user_client = <django.test.client.Client object at 0x7f84721d74c0>, post_with_future_date = <Post: Yes Thousand Building Magazine Wear Sign>
+
+    def test_posts_page_pk_pub_date_later_today(
+            user_client, post_with_future_date):
+        response = user_client.get(f'/posts/{post_with_future_date.id}/')
+>       assert response.status_code == HTTPStatus.NOT_FOUND, (
+            'Убедитесь, что если для поста дата публикации установлена в будущем, '
+            'отдельная страница такого поста возвращает статус 404.'
+        )
+E       AssertionError: Убедитесь, что если для поста дата публикации установлена в будущем, отдельная страница такого поста возвращает статус 404.
+E       assert 200 == <HTTPStatus.NOT_FOUND: 404>
+E        +  where 200 = <HttpResponse status_code=200, "text/html; charset=utf-8">.status_code
+E        +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
+
+tests/test_post_detail_views.py:103: AssertionError
+___________________________________________________________ test_posts_page_pk_category_unpublished ___________________________________________________________
+
+user_client = <django.test.client.Client object at 0x7f8472270c40>, post_with_unpublished_category = <Post: Two Leave Win Worker Hear Former>
+
+    def test_posts_page_pk_category_unpublished(
+            user_client,
+            post_with_unpublished_category,
+    ):
+        response = user_client.get(f'/posts/{post_with_unpublished_category.id}/')
+>       assert response.status_code == HTTPStatus.NOT_FOUND, (
+            'Убедитесь, что если посту присвоена категория, снятая с публикации, '
+            'то отдельная страница этого поста возвращает статус 404.'
+        )
+E       AssertionError: Убедитесь, что если посту присвоена категория, снятая с публикации, то отдельная страница этого поста возвращает статус 404.
+E       assert 200 == <HTTPStatus.NOT_FOUND: 404>
+E        +  where 200 = <HttpResponse status_code=200, "text/html; charset=utf-8">.status_code
+E        +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
+
+tests/test_post_detail_views.py:114: AssertionError
+__________________________________________________________________ test_pub_date_later_today __________________________________________________________________
+
+user_client = <django.test.client.Client object at 0x7f8471f9f4f0>
+posts_with_future_date = [<Post: Notice Leave Tough Order Anyone Analysis>, <Post: Including Participant Than Some Real Contain>, <Post: Remain Among Bag National Find Whatever>, <Post: This Camera Baby Drive Moment Start>]
+main_page_post_list_context_key = 'post_list'
+
+    def test_pub_date_later_today(
+            user_client, posts_with_future_date, main_page_post_list_context_key):
+        response = user_client.get('/')
+        context_post_list = response.context.get(main_page_post_list_context_key)
+>       assert len(context_post_list) == 0, (
+            'Если дата публикации поста позже текущего времени, '
+            'он не должен отображаться на главной странице.'
+        )
+E       AssertionError: Если дата публикации поста позже текущего времени, он не должен отображаться на главной странице.
+E       assert 4 == 0
+E        +  where 4 = len(<QuerySet [<Post: This Camera Baby Drive Moment Start>, <Post: Remain Among Bag National Find Whatever>, <Post: Including Participant Than Some Real Contain>, <Post: Notice Leave Tough Order Anyone Analysis>]>)
+
+tests/test_posts_page_views.py:84: AssertionError
+_________________ test_models_params_translate[Category-slug-\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440] __________________
+
+n_model = 'Category', param = 'slug', n_verbose = 'Идентификатор'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'n_verbose'), [
+        ('Category', 'is_published', 'Опубликовано'),
+        ('Category', 'title', 'Заголовок'),
+        ('Category', 'slug', 'Идентификатор'),
+        ('Category', 'description', 'Описание'),
+        ('Category', 'created_at', 'Добавлено'),
+        ('Location', 'name', 'Название места'),
+        ('Location', 'created_at', 'Добавлено'),
+        ('Location', 'is_published', 'Опубликовано'),
+        ('Post', 'pub_date', 'Дата и время публикации'),
+        ('Post', 'text', 'Текст'),
+        ('Post', 'author', 'Автор публикации'),
+        ('Post', 'category', 'Категория'),
+        ('Post', 'location', 'Местоположение'),
+        ('Post', 'created_at', 'Добавлено'),
+        ('Post', 'is_published', 'Опубликовано'),
+    ])
+    def test_models_params_translate(n_model, param, n_verbose):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.verbose_name == n_verbose, (
+            f'Убедитесь, что в модели `{n_model}` значение `verbose_name` '
+            f' для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Category` значение `verbose_name`  для атрибута `slug` установлено в соответствии с заданием.
+E       assert 'Слаг' == 'Идентификатор'
+E         - Идентификатор
+E         + Слаг
+
+tests/test_localization.py:75: AssertionError
+__________________________ test_models_params_translate[Category-created_at-\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e] ___________________________
+
+n_model = 'Category', param = 'created_at', n_verbose = 'Добавлено'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'n_verbose'), [
+        ('Category', 'is_published', 'Опубликовано'),
+        ('Category', 'title', 'Заголовок'),
+        ('Category', 'slug', 'Идентификатор'),
+        ('Category', 'description', 'Описание'),
+        ('Category', 'created_at', 'Добавлено'),
+        ('Location', 'name', 'Название места'),
+        ('Location', 'created_at', 'Добавлено'),
+        ('Location', 'is_published', 'Опубликовано'),
+        ('Post', 'pub_date', 'Дата и время публикации'),
+        ('Post', 'text', 'Текст'),
+        ('Post', 'author', 'Автор публикации'),
+        ('Post', 'category', 'Категория'),
+        ('Post', 'location', 'Местоположение'),
+        ('Post', 'created_at', 'Добавлено'),
+        ('Post', 'is_published', 'Опубликовано'),
+    ])
+    def test_models_params_translate(n_model, param, n_verbose):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.verbose_name == n_verbose, (
+            f'Убедитесь, что в модели `{n_model}` значение `verbose_name` '
+            f' для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Category` значение `verbose_name`  для атрибута `created_at` установлено в соответствии с заданием.
+E       assert 'created at' == 'Добавлено'
+E         - Добавлено
+E         + created at
+
+tests/test_localization.py:75: AssertionError
+__________________________ test_models_params_translate[Location-created_at-\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e] ___________________________
+
+n_model = 'Location', param = 'created_at', n_verbose = 'Добавлено'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'n_verbose'), [
+        ('Category', 'is_published', 'Опубликовано'),
+        ('Category', 'title', 'Заголовок'),
+        ('Category', 'slug', 'Идентификатор'),
+        ('Category', 'description', 'Описание'),
+        ('Category', 'created_at', 'Добавлено'),
+        ('Location', 'name', 'Название места'),
+        ('Location', 'created_at', 'Добавлено'),
+        ('Location', 'is_published', 'Опубликовано'),
+        ('Post', 'pub_date', 'Дата и время публикации'),
+        ('Post', 'text', 'Текст'),
+        ('Post', 'author', 'Автор публикации'),
+        ('Post', 'category', 'Категория'),
+        ('Post', 'location', 'Местоположение'),
+        ('Post', 'created_at', 'Добавлено'),
+        ('Post', 'is_published', 'Опубликовано'),
+    ])
+    def test_models_params_translate(n_model, param, n_verbose):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.verbose_name == n_verbose, (
+            f'Убедитесь, что в модели `{n_model}` значение `verbose_name` '
+            f' для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Location` значение `verbose_name`  для атрибута `created_at` установлено в соответствии с заданием.
+E       assert 'created at' == 'Добавлено'
+E         - Добавлено
+E         + created at
+
+tests/test_localization.py:75: AssertionError
+____________ test_models_params_translate[Post-author-\u0410\u0432\u0442\u043e\u0440 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438] ____________
+
+n_model = 'Post', param = 'author', n_verbose = 'Автор публикации'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'n_verbose'), [
+        ('Category', 'is_published', 'Опубликовано'),
+        ('Category', 'title', 'Заголовок'),
+        ('Category', 'slug', 'Идентификатор'),
+        ('Category', 'description', 'Описание'),
+        ('Category', 'created_at', 'Добавлено'),
+        ('Location', 'name', 'Название места'),
+        ('Location', 'created_at', 'Добавлено'),
+        ('Location', 'is_published', 'Опубликовано'),
+        ('Post', 'pub_date', 'Дата и время публикации'),
+        ('Post', 'text', 'Текст'),
+        ('Post', 'author', 'Автор публикации'),
+        ('Post', 'category', 'Категория'),
+        ('Post', 'location', 'Местоположение'),
+        ('Post', 'created_at', 'Добавлено'),
+        ('Post', 'is_published', 'Опубликовано'),
+    ])
+    def test_models_params_translate(n_model, param, n_verbose):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.verbose_name == n_verbose, (
+            f'Убедитесь, что в модели `{n_model}` значение `verbose_name` '
+            f' для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Post` значение `verbose_name`  для атрибута `author` установлено в соответствии с заданием.
+E       assert 'Автор Публикации' == 'Автор публикации'
+E         - Автор публикации
+E         ?       ^
+E         + Автор Публикации
+E         ?       ^
+
+tests/test_localization.py:75: AssertionError
+____________________________ test_models_params_translate[Post-created_at-\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e] _____________________________
+
+n_model = 'Post', param = 'created_at', n_verbose = 'Добавлено'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'n_verbose'), [
+        ('Category', 'is_published', 'Опубликовано'),
+        ('Category', 'title', 'Заголовок'),
+        ('Category', 'slug', 'Идентификатор'),
+        ('Category', 'description', 'Описание'),
+        ('Category', 'created_at', 'Добавлено'),
+        ('Location', 'name', 'Название места'),
+        ('Location', 'created_at', 'Добавлено'),
+        ('Location', 'is_published', 'Опубликовано'),
+        ('Post', 'pub_date', 'Дата и время публикации'),
+        ('Post', 'text', 'Текст'),
+        ('Post', 'author', 'Автор публикации'),
+        ('Post', 'category', 'Категория'),
+        ('Post', 'location', 'Местоположение'),
+        ('Post', 'created_at', 'Добавлено'),
+        ('Post', 'is_published', 'Опубликовано'),
+    ])
+    def test_models_params_translate(n_model, param, n_verbose):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.verbose_name == n_verbose, (
+            f'Убедитесь, что в модели `{n_model}` значение `verbose_name` '
+            f' для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Post` значение `verbose_name`  для атрибута `created_at` установлено в соответствии с заданием.
+E       assert 'created at' == 'Добавлено'
+E         - Добавлено
+E         + created at
+
+tests/test_localization.py:75: AssertionError
+_ test_help_text_translate[Category-slug-\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u0434\u043b\u044f URL; \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u044b \u0441\u0438\u043c\u0432\u043e\u043b\u044b \u043b\u0430\u0442\u0438\u043d\u0438\u0446\u044b, \u0446\u0438\u0444\u0440\u044b, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043f\u043e\u0434\u0447\u0451\u0440\u043a\u0438\u0432\u0430\u043d\u0438\u0435.] _
+
+n_model = 'Category', param = 'slug', text = 'Идентификатор страницы для URL; разрешены символы латиницы, цифры, дефис и подчёркивание.'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'text'), [
+        (
+            'Category',
+            'is_published',
+            'Снимите галочку, чтобы скрыть публикацию.'
+        ),
+        (
+            'Category',
+            'slug',
+            'Идентификатор страницы для URL; '
+            'разрешены символы латиницы, цифры, дефис и подчёркивание.'
+        ),
+        (
+            'Post',
+            'pub_date',
+            'Если установить дату и время в будущем — '
+            'можно делать отложенные публикации.'
+        ),
+    ])
+    def test_help_text_translate(n_model, param, text):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.help_text == text, (
+            f'Убедитесь, что в модели `{n_model}` значение `help_text` '
+            f'для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Category` значение `help_text` для атрибута `slug` установлено в соответствии с заданием.
+E       assert ('Идентификатор страницы для URL;разрешены символы латиницы, цифры, дефис и '\n 'подчёркивание.') == ('Идентификатор страницы для URL; разрешены символы латиницы, цифры, дефис и '\n 'подчёркивание.')
+E         - Идентификатор страницы для URL; разрешены символы латиницы, цифры, дефис и подчёркивание.
+E         ?                                -
+E         + Идентификатор страницы для URL;разрешены символы латиницы, цифры, дефис и подчёркивание.
+
+tests/test_localization.py:105: AssertionError
+_ test_help_text_translate[Post-pub_date-\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0434\u0430\u0442\u0443 \u0438 \u0432\u0440\u0435\u043c\u044f \u0432 \u0431\u0443\u0434\u0443\u0449\u0435\u043c \u2014 \u043c\u043e\u0436\u043d\u043e \u0434\u0435\u043b\u0430\u0442\u044c \u043e\u0442\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0435 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438.] _
+
+n_model = 'Post', param = 'pub_date', text = 'Если установить дату и время в будущем — можно делать отложенные публикации.'
+
+    @pytest.mark.parametrize(('n_model', 'param', 'text'), [
+        (
+            'Category',
+            'is_published',
+            'Снимите галочку, чтобы скрыть публикацию.'
+        ),
+        (
+            'Category',
+            'slug',
+            'Идентификатор страницы для URL; '
+            'разрешены символы латиницы, цифры, дефис и подчёркивание.'
+        ),
+        (
+            'Post',
+            'pub_date',
+            'Если установить дату и время в будущем — '
+            'можно делать отложенные публикации.'
+        ),
+    ])
+    def test_help_text_translate(n_model, param, text):
+        module = importlib.import_module('blog.models')
+        model = getattr(module, n_model)
+        field = model._meta.get_field(param)
+>       assert field.help_text == text, (
+            f'Убедитесь, что в модели `{n_model}` значение `help_text` '
+            f'для атрибута `{param}` '
+            'установлено в соответствии с заданием.'
+        )
+E       AssertionError: Убедитесь, что в модели `Post` значение `help_text` для атрибута `pub_date` установлено в соответствии с заданием.
+E       assert 'Если установить дату и время в будущем — можно делатьотложенные публикации.' == 'Если установить дату и время в будущем — можно делать отложенные публикации.'
+E         - Если установить дату и время в будущем — можно делать отложенные публикации.
+E         ?                                                      -
+E         + Если установить дату и время в будущем — можно делатьотложенные публикации.
+
+tests/test_localization.py:105: AssertionError
+=================================================================== short test summary info ===================================================================
+FAILED tests/test_category_page_views.py::test_category_page_pub_date_later_today - AssertionError: Убедитесь, что на странице категории не выводятся записи...
+FAILED tests/test_post_detail_views.py::test_posts_page_pk_unpublished_post - AssertionError: Убедитесь, что страница поста, снятого с публикации, возвращае...
+FAILED tests/test_post_detail_views.py::test_posts_page_pk_pub_date_later_today - AssertionError: Убедитесь, что если для поста дата публикации установлена ...
+FAILED tests/test_post_detail_views.py::test_posts_page_pk_category_unpublished - AssertionError: Убедитесь, что если посту присвоена категория, снятая с пу...
+FAILED tests/test_posts_page_views.py::test_pub_date_later_today - AssertionError: Если дата публикации поста позже текущего времени, он не должен отображат...
+FAILED tests/test_localization.py::test_models_params_translate[Category-slug-\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440]
+FAILED tests/test_localization.py::test_models_params_translate[Category-created_at-\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e] - AssertionError...
+FAILED tests/test_localization.py::test_models_params_translate[Location-created_at-\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e] - AssertionError...
+FAILED tests/test_localization.py::test_models_params_translate[Post-author-\u0410\u0432\u0442\u043e\u0440 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438]
+FAILED tests/test_localization.py::test_models_params_translate[Post-created_at-\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e] - AssertionError: Уб...
+FAILED tests/test_localization.py::test_help_text_translate[Category-slug-\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u044b \u0434\u043b\u044f URL; \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u044b \u0441\u0438\u043c\u0432\u043e\u043b\u044b \u043b\u0430\u0442\u0438\u043d\u0438\u0446\u044b, \u0446\u0438\u0444\u0440\u044b, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043f\u043e\u0434\u0447\u0451\u0440\u043a\u0438\u0432\u0430\u043d\u0438\u0435.]
+FAILED tests/test_localization.py::test_help_text_translate[Post-pub_date-\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0434\u0430\u0442\u0443 \u0438 \u0432\u0440\u0435\u043c\u044f \u0432 \u0431\u0443\u0434\u0443\u0449\u0435\u043c \u2014 \u043c\u043e\u0436\u043d\u043e \u0434\u0435\u043b\u0430\u0442\u044c \u043e\u0442\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0435 \u043f\u0443\u0431\u043b\u0438\u043a\u0430\u0446\u0438\u0438.]
+================================================================ 12 failed, 70 passed in 2.69s ================================================================
