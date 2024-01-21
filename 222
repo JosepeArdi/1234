@@ -1,217 +1,8 @@
- 
-ERROR at setup of test_posts_page_pk_published_location ___________________________________________________
+========================== FAILURES ===========================
+___________ test_category_page_pub_date_later_today ___________
 
-user_client = <django.test.client.Client object at 0x7f30159754c0>, post_with_published_location = <Post: Price Republican Deep Door Miss Will>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-__________________________________________________ ERROR at setup of test_posts_page_pk_unpublished_location __________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f30159af4f0>, post_with_published_location = <Post: Usually Next Station Responsibility Somebody Itself>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/2/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/2/
-_______________________________________________ ERROR at setup of test_posts_page_pk_check_context_keys[title] ________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f30158f0fa0>, post_with_published_location = <Post: Such Enter Myself Five Up Piece>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-________________________________________________ ERROR at setup of test_posts_page_pk_check_context_keys[text] ________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f30158ac220>, post_with_published_location = <Post: Bar Contain Pick Say Them Often>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-________________________________________________ ERROR at setup of test_posts_page_pk_check_context_keys[key2] ________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f3015892a60>, post_with_published_location = <Post: Dark Their To Suffer Myself Turn>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-________________________________________________ ERROR at setup of test_posts_page_pk_check_context_keys[key3] ________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f30158b38b0>, post_with_published_location = <Post: White Itself Where Detail Past Each>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-________________________________________________ ERROR at setup of test_posts_page_pk_check_context_keys[key4] ________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f301583dd30>, post_with_published_location = <Post: Clear Recognize Long Hit Create Dark>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-_______________________________________ ERROR at setup of test_posts_page_pk_post_with_published_location_and_category ________________________________________
-
-user_client = <django.test.client.Client object at 0x7f3015834940>, post_with_published_location = <Post: Window Care Now Door Fact Others>
-
-    @pytest.fixture
-    def post_context_key(user_client, post_with_published_location):
-        check_post_page_msg = (
-            'Убедитесь, что страница публикации '
-            'существует и отображается в соответствии с заданием.'
-        )
-        try:
-            post_response = user_client.get(
-                f'/posts/{post_with_published_location.id}/')
-        except Exception:
-            raise AssertionError(check_post_page_msg)
->       assert post_response.status_code == HTTPStatus.OK, check_post_page_msg
-E       AssertionError: Убедитесь, что страница публикации существует и отображается в соответствии с заданием.
-E       assert 404 == <HTTPStatus.OK: 200>
-E        +  where 404 = <HttpResponseNotFound status_code=404, "text/html">.status_code
-E        +  and   <HTTPStatus.OK: 200> = HTTPStatus.OK
-
-tests/conftest.py:61: AssertionError
--------------------------------------------------------------------- Captured stderr setup --------------------------------------------------------------------
-Not Found: /posts/1/
---------------------------------------------------------------------- Captured log setup ----------------------------------------------------------------------
-WARNING  django.request:log.py:224 Not Found: /posts/1/
-========================================================================== FAILURES ===========================================================================
-___________________________________________________________ test_category_page_pub_date_later_today ___________________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f3015ae6730>
-posts_with_future_date = [<Post: Now Yes Simply College Now Forward>, <Post: Entire Detail Able Me Student Hold>, <Post: Surface Nothing General Ground Within Action>, <Post: Save Deal Example Yard Arrive Believe>]
+user_client = <django.test.client.Client object at 0x7f2f25b6eb80>
+posts_with_future_date = [<Post: Break Owner Prepare That Especially Image>, <Post: That Add Together Whose Score Manage>, <Post: Success Behind Successful Forget Write Dinner>, <Post: Play Money Through Growth Age Upon>]
 category_page_post_list_context_key = 'post_list'
 
     def test_category_page_pub_date_later_today(
@@ -220,42 +11,283 @@ category_page_post_list_context_key = 'post_list'
             category_page_post_list_context_key
     ):
         if not posts_with_future_date[0].category:
-            raise AssertionError(
+>           raise AssertionError(
                 'В модели `Post` в атрибуте `category` '
                 'проверьте значение параметра `blank` на соответствие заданию.')
-        category_slug = posts_with_future_date[0].category.slug
-        response = user_client.get(f'/category/{category_slug}/')
-        if response.status_code == HTTPStatus.OK:
-            context_post_list = response.context.get(
-                category_page_post_list_context_key)
->           assert len(context_post_list) == 0, (
-                'Убедитесь, что на странице категории '
-                'не выводятся записи с датой публикации в будущем.'
+E           AssertionError: В модели `Post` в атрибуте `category` проверьте значение параметра `blank` на соответствие заданию.
+
+tests/test_category_page_views.py:99: AssertionError
+___________ test_posts_page_pk_pub_date_later_today ___________
+
+user_client = <django.test.client.Client object at 0x7f2f2587eb80>
+post_with_future_date = <Post: Try Lay Give Late Either Film>
+
+    def test_posts_page_pk_pub_date_later_today(
+            user_client, post_with_future_date):
+>       response = user_client.get(f'/posts/{post_with_future_date.id}/')
+
+tests/test_post_detail_views.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+venv/lib/python3.8/site-packages/django/test/client.py:742: in get
+    response = super().get(path, data=data, secure=secure, **extra)
+venv/lib/python3.8/site-packages/django/test/client.py:396: in get
+    return self.generic('GET', path, secure=secure, **{
+venv/lib/python3.8/site-packages/django/test/client.py:473: in generic
+    return self.request(**r)
+venv/lib/python3.8/site-packages/django/test/client.py:719: in request
+    self.check_exception(response)
+venv/lib/python3.8/site-packages/django/test/client.py:580: in check_exception
+    raise exc_value
+venv/lib/python3.8/site-packages/django/core/handlers/exception.py:47: in inner
+    response = get_response(request)
+venv/lib/python3.8/site-packages/django/core/handlers/base.py:181: in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+blogicum/blog/views.py:35: in post_detail
+    return render(request, template, context)
+venv/lib/python3.8/site-packages/django/shortcuts.py:19: in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+venv/lib/python3.8/site-packages/django/template/loader.py:62: in render_to_string
+    return template.render(context, request)
+venv/lib/python3.8/site-packages/django/template/backends/django.py:61: in render
+    return self.template.render(context)
+venv/lib/python3.8/site-packages/django/template/base.py:170: in render
+    return self._render(context)
+venv/lib/python3.8/site-packages/django/test/utils.py:100: in instrumented_test_render
+    return self.nodelist.render(context)
+venv/lib/python3.8/site-packages/django/template/base.py:938: in render
+    bit = node.render_annotated(context)
+venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated
+    return self.render(context)
+venv/lib/python3.8/site-packages/django/template/loader_tags.py:150: in render
+    return compiled_parent._render(context)
+venv/lib/python3.8/site-packages/django/test/utils.py:100: in instrumented_test_render
+    return self.nodelist.render(context)
+venv/lib/python3.8/site-packages/django/template/base.py:938: in render
+    bit = node.render_annotated(context)
+venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated
+    return self.render(context)
+venv/lib/python3.8/site-packages/django/template/loader_tags.py:62: in render
+    result = block.nodelist.render(context)
+venv/lib/python3.8/site-packages/django/template/base.py:938: in render
+    bit = node.render_annotated(context)
+venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated
+    return self.render(context)
+venv/lib/python3.8/site-packages/django/template/loader_tags.py:195: in render
+    return template.render(context)
+venv/lib/python3.8/site-packages/django/template/base.py:172: in render
+    return self._render(context)
+venv/lib/python3.8/site-packages/django/test/utils.py:100: in instrumented_test_render
+    return self.nodelist.render(context)
+venv/lib/python3.8/site-packages/django/template/base.py:938: in render
+    bit = node.render_annotated(context)
+venv/lib/python3.8/site-packages/django/template/base.py:905: in render_annotated
+    return self.render(context)
+venv/lib/python3.8/site-packages/django/template/defaulttags.py:449: in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+venv/lib/python3.8/site-packages/django/urls/base.py:86: in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <URLResolver <module 'blog.urls' from '/home/jose/Dev/django_sprint3/blogicum/blog/urls.py'> (blog:blog) ''>
+lookup_view = 'category_posts', _prefix = '/', args = ('',)
+kwargs = {}
+possibilities = [([('category/%(slug)s/', ['slug'])], 'category/(?P<slug>[-a-zA-Z0-9_]+)/\\Z', {}, {'slug': <django.urls.converters.SlugConverter object at 0x7f2f26b18730>})]
+possibility = [('category/%(slug)s/', ['slug'])]
+pattern = 'category/(?P<slug>[-a-zA-Z0-9_]+)/\\Z'
+defaults = {}
+converters = {'slug': <django.urls.converters.SlugConverter object at 0x7f2f26b18730>}
+result = 'category/%(slug)s/', params = ['slug']
+candidate_subs = {'slug': ''}
+text_candidate_subs = {'slug': ''}, match = True
+
+    def _reverse_with_prefix(self, lookup_view, _prefix, *args, **kwargs):
+        if args and kwargs:
+            raise ValueError("Don't mix *args and **kwargs in call to reverse()!")
+    
+        if not self._populated:
+            self._populate()
+    
+        possibilities = self.reverse_dict.getlist(lookup_view)
+    
+        for possibility, pattern, defaults, converters in possibilities:
+            for result, params in possibility:
+                if args:
+                    if len(args) != len(params):
+                        continue
+                    candidate_subs = dict(zip(params, args))
+                else:
+                    if set(kwargs).symmetric_difference(params).difference(defaults):
+                        continue
+                    if any(kwargs.get(k, v) != v for k, v in defaults.items()):
+                        continue
+                    candidate_subs = kwargs
+                # Convert the candidate subs to text using Converter.to_url().
+                text_candidate_subs = {}
+                match = True
+                for k, v in candidate_subs.items():
+                    if k in converters:
+                        try:
+                            text_candidate_subs[k] = converters[k].to_url(v)
+                        except ValueError:
+                            match = False
+                            break
+                    else:
+                        text_candidate_subs[k] = str(v)
+                if not match:
+                    continue
+                # WSGI provides decoded URLs, without %xx escapes, and the URL
+                # resolver operates on such URLs. First substitute arguments
+                # without quoting to build a decoded URL and look for a match.
+                # Then, if we have a match, redo the substitution with quoted
+                # arguments in order to return a properly encoded URL.
+                candidate_pat = _prefix.replace('%', '%%') + result
+                if re.search('^%s%s' % (re.escape(_prefix), pattern), candidate_pat % text_candidate_subs):
+                    # safe characters from `pchar` definition of RFC 3986
+                    url = quote(candidate_pat % text_candidate_subs, safe=RFC3986_SUBDELIMS + '/~:@')
+                    # Don't allow construction of scheme relative urls.
+                    return escape_leading_slashes(url)
+        # lookup_view can be URL name or callable, but callables are not
+        # friendly in error messages.
+        m = getattr(lookup_view, '__module__', None)
+        n = getattr(lookup_view, '__name__', None)
+        if m is not None and n is not None:
+            lookup_view_s = "%s.%s" % (m, n)
+        else:
+            lookup_view_s = lookup_view
+    
+        patterns = [pattern for (_, pattern, _, _) in possibilities]
+        if patterns:
+            if args:
+                arg_msg = "arguments '%s'" % (args,)
+            elif kwargs:
+                arg_msg = "keyword arguments '%s'" % kwargs
+            else:
+                arg_msg = "no arguments"
+            msg = (
+                "Reverse for '%s' with %s not found. %d pattern(s) tried: %s" %
+                (lookup_view_s, arg_msg, len(patterns), patterns)
             )
-E           AssertionError: Убедитесь, что на странице категории не выводятся записи с датой публикации в будущем.
-E           assert 1 == 0
-E            +  where 1 = len(<QuerySet [<Post: Now Yes Simply College Now Forward>]>)
+        else:
+            msg = (
+                "Reverse for '%(view)s' not found. '%(view)s' is not "
+                "a valid view function or pattern name." % {'view': lookup_view_s}
+            )
+>       raise NoReverseMatch(msg)
+E       django.urls.exceptions.NoReverseMatch: Reverse for 'category_posts' with arguments '('',)' not found. 1 pattern(s) tried: ['category/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
 
-tests/test_category_page_views.py:107: AssertionError
-_____________________________________________________________ test_posts_page_pk_unpublished_post _____________________________________________________________
+venv/lib/python3.8/site-packages/django/urls/resolvers.py:698: NoReverseMatch
+-------------------- Captured stderr call ---------------------
+Internal Server Error: /posts/1/
+Traceback (most recent call last):
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jose/Dev/django_sprint3/blogicum/blog/views.py", line 35, in post_detail
+    return render(request, template, context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/test/utils.py", line 100, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/test/utils.py", line 100, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 195, in render
+    return template.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 172, in render
+    return self._render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/test/utils.py", line 100, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 449, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/urls/base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/urls/resolvers.py", line 698, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'category_posts' with arguments '('',)' not found. 1 pattern(s) tried: ['category/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+---------------------- Captured log call ----------------------
+ERROR    django.request:log.py:224 Internal Server Error: /posts/1/
+Traceback (most recent call last):
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jose/Dev/django_sprint3/blogicum/blog/views.py", line 35, in post_detail
+    return render(request, template, context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 170, in render
+    return self._render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/test/utils.py", line 100, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/test/utils.py", line 100, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 195, in render
+    return template.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 172, in render
+    return self._render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/test/utils.py", line 100, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/base.py", line 905, in render_annotated
+    return self.render(context)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 449, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/urls/base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/jose/Dev/django_sprint3/venv/lib/python3.8/site-packages/django/urls/resolvers.py", line 698, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'category_posts' with arguments '('',)' not found. 1 pattern(s) tried: ['category/(?P<slug>[-a-zA-Z0-9_]+)/\\Z']
+___________ test_posts_page_pk_category_unpublished ___________
 
-user_client = <django.test.client.Client object at 0x7f3015866d90>, unpublished_post = <Post: Mother Development Performance Travel Half Perhaps>
-
-    def test_posts_page_pk_unpublished_post(user_client, unpublished_post):
-        response = user_client.get(f'/posts/{unpublished_post.id}/')
->       assert response.status_code == HTTPStatus.NOT_FOUND, (
-            'Убедитесь, что страница поста, снятого с публикации, '
-            'возвращает статус 404.'
-        )
-E       AssertionError: Убедитесь, что страница поста, снятого с публикации, возвращает статус 404.
-E       assert 200 == <HTTPStatus.NOT_FOUND: 404>
-E        +  where 200 = <HttpResponse status_code=200, "text/html; charset=utf-8">.status_code
-E        +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
-
-tests/test_post_detail_views.py:94: AssertionError
-___________________________________________________________ test_posts_page_pk_category_unpublished ___________________________________________________________
-
-user_client = <django.test.client.Client object at 0x7f3015830bb0>, post_with_unpublished_category = <Post: Rule Day Begin Why Half Form>
+user_client = <django.test.client.Client object at 0x7f2f2532e0d0>
+post_with_unpublished_category = <Post: Reveal Stop South Left Heavy Tv>
 
     def test_posts_page_pk_category_unpublished(
             user_client,
@@ -272,36 +304,42 @@ E        +  where 200 = <HttpResponse status_code=200, "text/html; charset=utf-8
 E        +  and   <HTTPStatus.NOT_FOUND: 404> = HTTPStatus.NOT_FOUND
 
 tests/test_post_detail_views.py:114: AssertionError
-__________________________________________________________________ test_pub_date_later_today __________________________________________________________________
+_ TestPostModelAttrs.test_model_attrs[category-ForeignKey-params5] _
 
-user_client = <django.test.client.Client object at 0x7f30156258b0>
-posts_with_future_date = [<Post: New Various Clear Degree Read Relate>, <Post: Company Good Say Card Rise These>, <Post: Today Heavy Offer Account Already Mother>, <Post: Information Same Water Recently Against Even>]
-main_page_post_list_context_key = 'post_list'
+self = <test_post_model.TestPostModelAttrs object at 0x7f2f260bb040>
+field = 'category'
+type = <class 'django.db.models.fields.related.ForeignKey'>
+params = {'blank': False, 'null': True}
 
-    def test_pub_date_later_today(
-            user_client, posts_with_future_date, main_page_post_list_context_key):
-        response = user_client.get('/')
-        context_post_list = response.context.get(main_page_post_list_context_key)
->       assert len(context_post_list) == 0, (
-            'Если дата публикации поста позже текущего времени, '
-            'он не должен отображаться на главной странице.'
+    def test_model_attrs(self, field, type, params):
+        model_name = self.model.__name__
+        assert hasattr(self.model, field), (
+            f'В модели `{model_name}` укажите атрибут `{field}`.')
+        model_field = self.model._meta.get_field(field)
+        assert isinstance(model_field, type), (
+            f'В модели `{model_name}` у атрибута `{field}` '
+            f'укажите тип `{type}`.'
         )
-E       AssertionError: Если дата публикации поста позже текущего времени, он не должен отображаться на главной странице.
-E       assert 4 == 0
-E        +  where 4 = len(<QuerySet [<Post: Information Same Water Recently Against Even>, <Post: Today Heavy Offer Account Already Mother>, <Post: Company Good Say Card Rise These>, <Post: New Various Clear Degree Read Relate>]>)
+        for param, value_param in params.items():
+            display_name = self.get_parameter_display_name(param)
+            assert param in model_field.__dict__, (
+                f'В модели `{model_name}` для атрибута `{field}` '
+                f'укажите параметр `{display_name}`.'
+            )
+>           assert model_field.__dict__.get(param) == value_param, (
+                f'В модели `{model_name}` в атрибуте `{field}` '
+                f'проверьте значение параметра `{display_name}` '
+                'на соответствие заданию.'
+            )
+E           AssertionError: В модели `Post` в атрибуте `category` проверьте значение параметра `blank` на соответствие заданию.
+E           assert True == False
+E            +  where True = <built-in method get of dict object at 0x7f2f27757b00>('blank')
+E            +    where <built-in method get of dict object at 0x7f2f27757b00> = {'_db_tablespace': None, '_error_messages': None, '_get_default': <function return_None at 0x7f2f26c5f160>, '_unique': False, ...}.get
+E            +      where {'_db_tablespace': None, '_error_messages': None, '_get_default': <function return_None at 0x7f2f26c5f160>, '_unique': False, ...} = <django.db.models.fields.related.ForeignKey: category>.__dict__
 
-tests/test_posts_page_views.py:84: AssertionError
-=================================================================== short test summary info ===================================================================
-FAILED tests/test_category_page_views.py::test_category_page_pub_date_later_today - AssertionError: Убедитесь, что на странице категории не выводятся записи...
-FAILED tests/test_post_detail_views.py::test_posts_page_pk_unpublished_post - AssertionError: Убедитесь, что страница поста, снятого с публикации, возвращае...
-FAILED tests/test_post_detail_views.py::test_posts_page_pk_category_unpublished - AssertionError: Убедитесь, что если посту присвоена категория, снятая с пу...
-FAILED tests/test_posts_page_views.py::test_pub_date_later_today - AssertionError: Если дата публикации поста позже текущего времени, он не должен отображат...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_published_location - AssertionError: Убедитесь, что страница публикации существует и отображается ...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_unpublished_location - AssertionError: Убедитесь, что страница публикации существует и отображаетс...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_check_context_keys[title] - AssertionError: Убедитесь, что страница публикации существует и отобра...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_check_context_keys[text] - AssertionError: Убедитесь, что страница публикации существует и отображ...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_check_context_keys[key2] - AssertionError: Убедитесь, что страница публикации существует и отображ...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_check_context_keys[key3] - AssertionError: Убедитесь, что страница публикации существует и отображ...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_check_context_keys[key4] - AssertionError: Убедитесь, что страница публикации существует и отображ...
-ERROR tests/test_post_detail_views.py::test_posts_page_pk_post_with_published_location_and_category - AssertionError: Убедитесь, что страница публикации сущ...
-=========================================================== 4 failed, 70 passed, 8 errors in 2.73s ============================================================
+tests/conftest.py:174: AssertionError
+=================== short test summary info ===================
+FAILED tests/test_category_page_views.py::test_category_page_pub_date_later_today
+FAILED tests/test_post_detail_views.py::test_posts_page_pk_pub_date_later_today
+FAILED tests/test_post_detail_views.py::test_posts_page_pk_category_unpublished
+FAILED tests/test_post_model.py::TestPostModelAttrs::test_model_attrs[category-ForeignKey-params5]
