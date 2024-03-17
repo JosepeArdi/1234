@@ -3,15 +3,15 @@
 
 ## Как запустить
 * клонировать репозиторий, перейти в директорию проекта
-git clone git@github.com:JosepeArdi/homework_bot.git
-cd homework_bot
+$ git clone git@github.com:JosepeArdi/homework_bot.git
+$ cd homework_bot
 * создать виртуальное окружение и установить [зависимости](requirements.txt)
-python -m venv venv
+$ python -m venv venv
 . venv/Scripts/activate (для Windows)
 . venv/bin/activate (для linux)
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 * создать файл с переменными окружения по [примеру](.env.example)
 * запустить скрипт
-python homework.py
+$ python homework.py
 ## Запуск тестов
-pytest
+$ pytest
