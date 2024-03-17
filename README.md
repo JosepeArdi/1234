@@ -3,8 +3,8 @@
 
 ## Как запустить
 * клонировать репозиторий, перейти в директорию проекта
-$ git clone git@github.com:JosepeArdi/homework_bot.git
-$ cd homework_bot
+-- git clone git@github.com:JosepeArdi/homework_bot.git
+-- cd homework_bot
 * создать виртуальное окружение и установить [зависимости](requirements.txt)
 $ python -m venv venv
 . venv/Scripts/activate (для Windows)
